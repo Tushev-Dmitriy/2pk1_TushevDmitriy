@@ -1,101 +1,209 @@
-﻿int check = 1;
-bool availabilaty = true;
-while (check <= 10)
-{
-    Console.WriteLine("Выберите время записи:");
+﻿int slots = 10; //Создание переменной с количеством слотов регистрации
+bool[] availability = new bool[slots]; //Создание массива доступности
+string[] names = new string[slots]; //Создание массива имен
+string[] numbers = new string[slots]; //Создание массива номеров
 
-    bool availabilaty1 = true;
-    int i = 8;
-    int z = 1;
-    while (i < 18)
-    {
-        Console.WriteLine($"{z}) {i}.00 - {i + 1}.00" + $" Свободно: {availabilaty}");
-        Console.WriteLine($"{z}) {i}.00 - {i + 1}.00" + $" Свободно: {availabilaty1}");
-        i++; z++;
-    }
-    int time = int.Parse(Console.ReadLine());
-    string name = "test";
-    string number = "123";
-    if (time <= 10)
-    {
-        switch (time)
+for (int check = 0; check < slots;) //Проверка доступности слотов
+{
+    Console.WriteLine("Выберите время записи:"); //Регистрация
+    for (int i = 0; i < slots;) //Цикл с выводом всех времён
         {
-            case 1:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                availabilaty1 = false;
-                break;
-            case 2:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty2 = false;
-                break;
-            case 3:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty3 = false;
-                break;
-            case 4:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty4 = false;
-                break;
-            case 5:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty5 = false;
-                break;
-            case 6:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty6 = false;
-                break;
-            case 7:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty7 = false;
-                break;
-            case 8:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty8 = false;
-                break;
-            case 9:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty9 = false;
-                break;
-            case 10:
-                Console.WriteLine("Введите свое имя:");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите свой номер телефона:");
-                number = Console.ReadLine();
-                bool availabilaty10 = false;
-                break;
+        int slotNumber = i + 1;
+        int s_time = 8 + i;
+        int e_time = s_time + 1;
+
+        if (!availability[i]) //Проверка доступности
+        {
+            Console.WriteLine($"{slotNumber}) {s_time}.00 - {e_time}.00 Свободно");
+            }
+        else
+            {
+            Console.WriteLine($"{slotNumber}) {s_time}.00 - {e_time}.00 Занято ({names[i]}, {numbers[i]})");
+            }
+        i++;
         }
-    }
-    else
+
+    int choice = int.Parse(Console.ReadLine()); //Создание переменной выбора пользователя
+    int index; //Создание переменной индекса слота в массиве
+
+    switch (choice) //Выбор времени из расписания
     {
-        Console.WriteLine("Вы выбрали неправильное время. Повторите ещё раз");
+        case 1:
+            index = choice - 1; //Высчитывание индекса в массиве
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:"); //Ввод имени
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:"); //Ввод времени
+                numbers[index] = Console.ReadLine();
+                availability[index] = true; //Доступность слота во времени
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)"); //Если слот недоступен
+                Console.ReadLine();
+            }
+            break;
+
+        case 2: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 3: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 4: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 5: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 6: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 7: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 8: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 9: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        case 10: //Аналогичное повторение действий для других значений
+            index = choice - 1;
+            if (!availability[index])
+            {
+                Console.WriteLine("Введите свое имя:");
+                names[index] = Console.ReadLine();
+                Console.WriteLine("Введите свой номер телефона:");
+                numbers[index] = Console.ReadLine();
+                availability[index] = true;
+            }
+            else
+            {
+                Console.WriteLine("Этот слот уже занят. Пожалуйста, выберите другой. (нажмите enter)");
+                Console.ReadLine();
+            }
+            break;
+
+        default: //Если case не сработал
+            Console.WriteLine("Вы выбрали неправильное время. Повторите ещё раз. (нажмите enter)");
+            Console.ReadLine();
+            break;
     }
-    check++;
-    Console.Clear();
+
+    check++; //Увеличение переменной check
+    Console.Clear(); //Очищение консоли для удобства
 }
