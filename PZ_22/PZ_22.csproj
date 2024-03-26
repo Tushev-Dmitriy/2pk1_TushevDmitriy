@@ -8,4 +8,28 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Icons\align-left.png" />
+    <None Remove="Icons\align-right.png" />
+    <None Remove="Icons\bold.png" />
+    <None Remove="Icons\cross-out.png" />
+    <None Remove="Icons\delete.png" />
+    <None Remove="Icons\format.png" />
+    <None Remove="Icons\italic-font.png" />
+    <None Remove="Icons\plus-symbol-button.png" />
+    <None Remove="Icons\text.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\align-left.png" />
+    <Resource Include="Icons\align-right.png" />
+    <Resource Include="Icons\bold.png" />
+    <Resource Include="Icons\cross-out.png" />
+    <Resource Include="Icons\delete.png" />
+    <Resource Include="Icons\format.png" />
+    <Resource Include="Icons\italic-font.png" />
+    <Resource Include="Icons\plus-symbol-button.png" />
+    <Resource Include="Icons\text.png" />
+  </ItemGroup>
+
 </Project>
