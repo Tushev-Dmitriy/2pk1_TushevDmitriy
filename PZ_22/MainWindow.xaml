@@ -10,18 +10,18 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Menu Width="800">
                 <MenuItem Header="File">
-                    <MenuItem Header="Create">
+                    <MenuItem Header="Create" Click="CreateFileMenuItem_Click">
                         <MenuItem.Icon>
                             <Image Source="Icons\plus-symbol-button.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Delete">
+                    <MenuItem Header="Delete" Click="DeleteFileMenuItem_Click">
                         <MenuItem.Icon>
                             <Image Source="Icons\delete.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Header="Clear" ></MenuItem>
+                    <MenuItem Header="Clear" Click="DeleteAllFileMenuItem_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="About">
                     <MenuItem Header="About developer" ></MenuItem>
@@ -60,18 +60,25 @@
                 </WrapPanel>
             </WrapPanel>
         </StackPanel>
-
-        <ListBox DockPanel.Dock="Left" MinWidth="200" Background="LightYellow">
-
-        </ListBox>
-
-        <RichTextBox>
-
-        </RichTextBox>
-
+        
         <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem Content="Ready"/>
+            <StatusBarItem>
+                <TextBlock Name="CursorPositionTextBlock" Margin="5">Строка:</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Name="FileSaveOrNo" Margin="5">Save</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Name="FileDateTimeTextBlock" Margin="5">Time</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Name="FileSizeTextBlock" Margin="5">File Size:</TextBlock>
+            </StatusBarItem>
         </StatusBar>
         
+        <ListBox DockPanel.Dock="Left" MinWidth="200" Background="LightYellow" 
+                 Name="notesList" MouseDoubleClick="filesListBox_MouseDoubleClick"></ListBox>
+        <RichTextBox Name="primeBox" SpellCheck.IsEnabled="True" Language="ru-ru" AcceptsTab="True" AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Visible" TextChanged="TextChangeInTextBox"/>
     </DockPanel>
 </Window>
