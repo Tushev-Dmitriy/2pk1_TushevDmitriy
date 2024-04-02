@@ -60,25 +60,44 @@
                 </WrapPanel>
             </WrapPanel>
         </StackPanel>
-        
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>
-                <TextBlock Name="CursorPositionTextBlock" Margin="5">Строка:</TextBlock>
-            </StatusBarItem>
-            <StatusBarItem>
-                <TextBlock Name="FileSaveOrNo" Margin="5">Save</TextBlock>
-            </StatusBarItem>
-            <StatusBarItem>
-                <TextBlock Name="FileDateTimeTextBlock" Margin="5">Time</TextBlock>
-            </StatusBarItem>
-            <StatusBarItem>
-                <TextBlock Name="FileSizeTextBlock" Margin="5">File Size:</TextBlock>
-            </StatusBarItem>
-        </StatusBar>
-        
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StatusBar Grid.Row="1">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem Grid.Column="0">
+                    <TextBlock Name="CursorPositionTextBlock" Margin="5">Line: 1, Column: 1</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="1">
+                    <TextBlock Name="FileSaveOrNo" Margin="5">Save</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="3">
+                    <TextBlock Name="FileDateTimeTextBlock" Margin="5">Time</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="4">
+                    <TextBlock Name="FileSizeTextBlock" Margin="5">File Size:</TextBlock>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+
         <ListBox DockPanel.Dock="Left" MinWidth="200" Background="LightYellow" 
                  Name="notesList" MouseDoubleClick="filesListBox_MouseDoubleClick"></ListBox>
         <RichTextBox Name="primeBox" SpellCheck.IsEnabled="True" Language="ru-ru" AcceptsTab="True" AcceptsReturn="True" 
-                     VerticalScrollBarVisibility="Visible" TextChanged="TextChangeInTextBox"/>
+                     VerticalScrollBarVisibility="Visible" TextChanged="TextChangeInTextBox" KeyDown="CursorPositionUpdate" KeyUp="CursorPositionUpdate" SelectionChanged="CursorPositionUpdate"/>
     </DockPanel>
 </Window>

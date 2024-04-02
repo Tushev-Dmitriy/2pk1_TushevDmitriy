@@ -164,8 +164,25 @@ namespace PZ_22
                     }
                 }
 
+                TextPointer navigator = caretPosition.GetLineStartPosition(-1);
+                while (navigator != null)
+                {
+                    line++;
+                    navigator = navigator.GetLineStartPosition(-1);
+                }
+
                 CursorPositionTextBlock.Text = $"Line: {line}, Column: {column}";
             }
+        }
+
+        private void CursorPositionUpdate(object sender, KeyEventArgs e)
+        {
+            UpdateCursorPosition();
+        }
+
+        private void CursorPositionUpdate(object sender, RoutedEventArgs e)
+        {
+            UpdateCursorPosition();
         }
     }
 }
